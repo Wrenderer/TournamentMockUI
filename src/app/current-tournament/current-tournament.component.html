@@ -1,0 +1,20 @@
+<mat-card class="small dashboard">
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>account_tree</mat-icon></div>
+    <mat-card-title>Current Tournament</mat-card-title>
+    <mat-card-subtitle>Name</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngIf="currentTournament$ | async; else noTournament">
+      <mat-selection-list>
+        <mat-list-option *ngFor="let participant of participants$ | async">
+          {{ participant }}
+        </mat-list-option>
+      </mat-selection-list>
+    </ng-container>
+
+    <ng-template #noTournament>
+      <button (click)="createTournament()" mat-raised-button color="primary">Create Default Tournament</button>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

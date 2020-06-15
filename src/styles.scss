@@ -10,9 +10,17 @@ mat-card.center-stage.large {
   margin: 10vh auto;
 }
 
-mat-card.center-stage, mat-card.center-stage.small {
+mat-card.center-stage, mat-card.center-stage {
   max-width: 50%;
   margin: 10vh auto;
+}
+
+mat-card.small {
+  max-width: 50%;
+}
+
+mat-card.dashboard {
+  margin: 1vh 1vw;
 }
 
 mat-form-field.mat-form-field.single-line {
