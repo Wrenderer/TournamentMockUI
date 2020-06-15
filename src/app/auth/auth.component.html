@@ -1,0 +1,29 @@
+<mat-card class="center-stage">
+  <mat-card-header>
+    <div mat-card-avatar><mat-icon>lock</mat-icon></div>
+    <mat-card-title>Tournament Analysis System - Authorization</mat-card-title>
+    <mat-card-subtitle>Please Log In</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- Login Form -->
+    <form [formGroup]="loginForm">
+      <!-- Username Field -->
+      <mat-form-field appearance="fill" class="single-line">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Username">
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-hint>In this demo, any username will do as long as it's not empty!</mat-hint>
+      </mat-form-field>
+      <!-- Password Field -->
+      <mat-form-field appearance="fill" class="single-line">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Password" type="password">
+        <mat-icon matSuffix>vpn_key</mat-icon>
+        <mat-hint>In this demo, any password will do as long as it's not empty!</mat-hint>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button (click)="validateLogin()" mat-button>LOGIN</button>
+  </mat-card-actions>
+</mat-card>
