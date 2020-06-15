@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FakeOidcService } from '../fake-oidc.service';
 import { Router } from '@angular/router';
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
 
 @Component({selector: '', template: '', styles: ['']})
 class MockComponent {}
@@ -36,7 +37,7 @@ describe('DashboardComponent', () => {
       oidc = TestBed.inject(FakeOidcService) as jasmine.SpyObj<FakeOidcService>;
       oidc.authorize = jasmine.createSpy('authorize').and.callFake(() => {});
       oidc.deAuthorize = jasmine.createSpy('deAuthorize').and.callFake(() => {});
-      oidc.isAuthorized = jasmine.createSpy('isAuthorized').and.returnValue(true);
+      oidc.isAuthorized = jasmine.createSpy('isAuthorized').and.returnValue(of(true));
     });
   }));
 
