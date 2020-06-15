@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/* Material Augmentations */
+mat-card.center-stage.large {
+  max-width: 75%;
+  margin: 10vh auto;
+}
+
+mat-card.center-stage, mat-card.center-stage.small {
+  max-width: 50%;
+  margin: 10vh auto;
+}
+
+mat-form-field.mat-form-field.single-line {
+  width:100%;
+  margin:1rem 0;
+}
