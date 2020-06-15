@@ -3,6 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map, tap, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { last } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -24,27 +25,17 @@ export class AppComponent implements OnInit, OnDestroy {
    */
   private setTitle() {
     this.router?.events?.pipe(
+        tap((event) => console.log(event)),
         filter((event) => event instanceof NavigationEnd),
         map(() => this.router),
         tap((event) => {
-          const title = this.makeTitle(this.router.routerState, this.router.routerState.root).join(' - ');
+          let title = 'Tournament Analysis System';
+          const subtitle = last(this.router?.url?.split('/') || ['']);
+          title = (subtitle.length > 0) ? title + ' - ' + subtitle: title;
           this.titleService.setTitle(title);
         }),
         takeUntil(this.unsubSubject)
       ).subscribe();
-  }
-
-
-  private makeTitle(state, parent) {
-    const data = [];
-    if (parent?.snapshot.data?.title) {
-      data.push(parent.snapshot.data.title);
-    }
-
-    if (state && parent) {
-      data.push(... this.makeTitle(state, state.firstChild(parent)));
-    }
-    return data.length > 0 ? data : ['Tournament Analysis System'];
   }
 
   public ngOnDestroy() {
